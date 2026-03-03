@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   User, Briefcase, Star, Download, Sparkles, Wand2, 
   CheckCircle2, ArrowRight, ArrowLeft, Mail, Phone, MapPin, Globe, 
-  Cpu, Camera, Trash2, Send, RotateCcw, Eye, X
+  Cpu, Camera, Trash2, Send, RotateCcw, Eye, X, Layout
 } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -401,5 +401,3 @@ function Input({ label, value, onChange, isTextArea }: { label: string, value: s
     </div>
   );
 }
-
-function Layout(props: any) { return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>; }
