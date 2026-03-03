@@ -9,26 +9,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Données manquantes' }, { status: 400 });
     }
 
-    // Configuration du transporteur (à remplir dans les variables d'environnement Vercel)
+    // Configuration du transporteur SMTP (à configurer dans Vercel)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: Number(process.env.SMTP_PORT) || 465,
       secure: true,
       auth: {
-        user: process.env.SMTP_USER, // Votre email Koria
+        user: process.env.SMTP_USER, // Votre email de connexion (ex: koria.contact@gmail.com)
         pass: process.env.SMTP_PASS, // Votre mot de passe d'application
       },
     });
 
     const mailOptions = {
-      from: `"Koria AI" <${process.env.EMAIL_FROM || process.env.SMTP_USER}>`,
+      from: `"Koria AI" <contact@koria.fr>`, // L'adresse de votre vitrine en expéditeur
       to: email,
       subject: `Votre CV Koria 2026 - ${fullName}`,
-      text: `Bonjour ${fullName},
-
-Veuillez trouver ci-joint votre CV optimisé pour 2026 par Koria AI.
-
-Bonne chance dans vos recherches !`,
+      text: `Bonjour ${fullName},\n\nVeuillez trouver ci-joint votre CV optimisé pour 2026 par Koria AI.\n\nBonne chance dans vos recherches !\n\nL'équipe Koria\ncontact@koria.fr`,
       attachments: [
         {
           filename: `CV_KORIA_${fullName.replace(/\s+/g, '_')}_2026.pdf`,
